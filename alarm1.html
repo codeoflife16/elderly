@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elderly Fall Detection and SOS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .container h1 {
+            color: #d9534f;
+        }
+        .container button {
+            background-color: #d9534f;
+            color: #fff;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .container button:hover {
+            background-color: #c9302c;
+        }
+        .container audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Fall Detected!</h1>
+        <p>An elderly person has fallen. Immediate assistance is required.</p>
+        <button onclick="triggerSOS()">Send SOS Signal</button>
+        <audio id="alarmSound" src="alarm.mp3"></audio>
+    </div>
+
+    <script>
+        function triggerSOS() {
+            var alarm = document.getElementById('alarmSound');
+            alarm.play();
+            alert('SOS signal sent! Emergency services have been notified.');
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elderly Fall Detection and SOS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .container h1 {
+            color: #d9534f;
+        }
+        .container button {
+            background-color: #d9534f;
+            color: #fff;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .container button:hover {
+            background-color: #c9302c;
+        }
+        .container audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 id="status">Monitoring...</h1>
+        <p id="message">No falls detected yet.</p>
+        <button id="sosButton" onclick="triggerSOS()" style="display:none;">Send SOS Signal</button>
+        <audio id="alarmSound" src="alarm.mp3"></audio>
+    </div>
+
+    <script>
+        function simulateFallDetection() {
+            // Simulate the fall detection logic
+            var fallDetected = Math.random() < 0.5; // Randomly decide if a fall occurred
+
+            if (fallDetected) {
+                document.getElementById('status').innerText = 'Fall Detected!';
+                document.getElementById('message').innerText = 'An elderly person has fallen. Immediate assistance is required.';
+                document.getElementById('sosButton').style.display = 'inline-block';
+                triggerSOS();
+            } else {
+                document.getElementById('status').innerText = 'Monitoring...';
+                document.getElementById('message').innerText = 'No falls detected yet.';
+            }
+        }
+
+        function triggerSOS() {
+            var alarm = document.getElementById('alarmSound');
+            alarm.play();
+            alert('SOS signal sent! Emergency services have been notified.');
+        }
+
+        // Simulate checking for falls every 5 seconds
+        setInterval(simulateFallDetection, 5000);
+    </script>
+
+</body>
+</html>
